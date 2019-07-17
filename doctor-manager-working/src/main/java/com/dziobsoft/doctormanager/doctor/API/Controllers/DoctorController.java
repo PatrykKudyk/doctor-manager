@@ -23,10 +23,10 @@ public class DoctorController {
     @RequestMapping(value = "/list", produces = "application/json", method = RequestMethod.GET)
     public List<DoctorResource> docktorsList(@RequestParam(required = false) Specialization specialization,
                                               @RequestParam(required = false) Integer minRate) {
-        List<DoctorResource> doctors = new ArrayList<>();
+        List<DoctorResource> doctors;
         List<Doctor> list = doctorService.getList(specialization, minRate);
         DoctorResourceAssembler doctorResourceAssembler = new DoctorResourceAssembler();
-        doctors = doctorResourceAssembler.resourceMaking(list, doctors);
+        doctors = doctorResourceAssembler.resourceMaking(list);
         return doctors;
     }
 
