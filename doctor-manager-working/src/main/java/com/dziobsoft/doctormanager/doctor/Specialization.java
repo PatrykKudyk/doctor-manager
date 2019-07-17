@@ -1,4 +1,4 @@
-package com.dziobsoft.doctormanager.Models;
+package com.dziobsoft.doctormanager.doctor;
 
 public enum Specialization {
     OPTYK,

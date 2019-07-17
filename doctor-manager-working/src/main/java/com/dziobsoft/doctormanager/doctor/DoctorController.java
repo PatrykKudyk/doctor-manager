@@ -1,10 +1,5 @@
-package com.dziobsoft.doctormanager.API.Controllers;
+package com.dziobsoft.doctormanager.doctor;
 
-import com.dziobsoft.doctormanager.API.Assemblers.DoctorResourceAssembler;
-import com.dziobsoft.doctormanager.API.Resources.DoctorResource;
-import com.dziobsoft.doctormanager.Models.Doctor;
-import com.dziobsoft.doctormanager.Models.Specialization;
-import com.dziobsoft.doctormanager.Service.DoctorService;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,16 +16,29 @@ public class DoctorController {
     private DoctorService doctorService;
 
     @RequestMapping(value = "/list", produces = "application/json", method = RequestMethod.GET)
-    public List<DoctorResource> docktorsList(@RequestParam(required = false) Specialization specialization,
-                                             @RequestParam(required = false) Integer minRate) {
-        List<DoctorResource> doctors = new ArrayList<>();
+    public List<DocktorResource> docktorsList(@RequestParam(required = false) Specialization specialization,
+                                              @RequestParam(required = false) Integer minRate) {
+        List<DocktorResource> doctors = new ArrayList<>();
         List<Doctor> list = doctorService.getList(specialization, minRate);
-        DoctorResourceAssembler doctorResourceAssembler = new DoctorResourceAssembler();
-        doctors = doctorResourceAssembler.resourceMaking(list, doctors);
 
+        for(int i = 0; i < list.size(); i++){
+            Doctor doctor = list.get(i);
+            doctors.add(new DocktorResource(doctor.getName(), doctor.getLastname()));
+        }
         return doctors;
     }
 
+    public class DocktorResource {
+        @JsonProperty
+        private String name;
+        @JsonProperty
+        private String lastname;
+
+        public DocktorResource(String name, String lastname) {
+            this.name = name;
+            this.lastname = lastname;
+        }
+    }
 
     @Autowired
     public void setDoctorService(DoctorService doctorService) {

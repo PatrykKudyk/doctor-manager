@@ -1,8 +1,5 @@
-package com.dziobsoft.doctormanager.Service;
+package com.dziobsoft.doctormanager.doctor;
 
-import com.dziobsoft.doctormanager.DAO.DoctorDao;
-import com.dziobsoft.doctormanager.Models.Doctor;
-import com.dziobsoft.doctormanager.Models.Specialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
