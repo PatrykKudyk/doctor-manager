@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface DoctorService {
     List<Doctor> getList(Specialization specialization, Integer minRate);
+    List<Doctor> getList(Integer minRate);
+    List<Doctor> getListWithRate(Integer rate);
 }

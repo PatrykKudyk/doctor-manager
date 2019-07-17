@@ -20,17 +20,38 @@ import java.util.List;
 public class DoctorController {
     private DoctorService doctorService;
 
-    @RequestMapping(value = "/list", produces = "application/json", method = RequestMethod.GET)
-    public List<DoctorResource> docktorsList(@RequestParam(required = false) Specialization specialization,
+    @RequestMapping(value = "/list/doctorNames", produces = "application/json", method = RequestMethod.GET)
+    public List<DoctorResource> doctorsNamesList(@RequestParam(required = false) Specialization specialization,
                                               @RequestParam(required = false) Integer minRate) {
-        List<DoctorResource> doctors;
-        List<Doctor> list = doctorService.getList(specialization, minRate);
+        List<DoctorResource> doctorResources;
+        List<Doctor> doctorList = doctorService.getList(specialization, minRate);
         DoctorResourceAssembler doctorResourceAssembler = new DoctorResourceAssembler();
-        doctors = doctorResourceAssembler.resourceMaking(list);
-        return doctors;
+        doctorResources = doctorResourceAssembler.resourceMaking(doctorList);
+
+        return doctorResources;
     }
 
+    @RequestMapping(value = "/list/doctorMinRate", produces = "application/json", method = RequestMethod.GET)
+    public List<DoctorResource> doctorByMinRate(@RequestParam(required = true) Integer minRate){
 
+        List<DoctorResource> doctorResources;
+        List<Doctor> doctorList = doctorService.getList(minRate);
+        DoctorResourceAssembler doctorResourceAssembler = new DoctorResourceAssembler();
+        doctorResources = doctorResourceAssembler.resourceMaking(doctorList);
+
+        return doctorResources;
+    }
+
+    @RequestMapping(value = "/list/doctorExactRate", produces = "application/json", method = RequestMethod.GET)
+    public List<DoctorResource> doctorExactRate(@RequestParam(required = true) Integer rate){
+
+        List<DoctorResource> doctorResources;
+        List<Doctor> doctorList = doctorService.getListWithRate(rate);
+        DoctorResourceAssembler doctorResourceAssembler = new DoctorResourceAssembler();
+        doctorResources = doctorResourceAssembler.resourceMaking(doctorList);
+
+        return doctorResources;
+    }
 
     @Autowired
     public void setDoctorService(DoctorService doctorService) {
