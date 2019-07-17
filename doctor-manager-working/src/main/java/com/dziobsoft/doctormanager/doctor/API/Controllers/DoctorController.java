@@ -1,5 +1,10 @@
-package com.dziobsoft.doctormanager.doctor;
+package com.dziobsoft.doctormanager.doctor.API.Controllers;
 
+import com.dziobsoft.doctormanager.doctor.API.Assembler.DoctorResourceAssembler;
+import com.dziobsoft.doctormanager.doctor.API.Resources.DoctorResource;
+import com.dziobsoft.doctormanager.doctor.Models.Doctor;
+import com.dziobsoft.doctormanager.doctor.Services.DoctorService;
+import com.dziobsoft.doctormanager.doctor.Models.Specialization;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,29 +21,16 @@ public class DoctorController {
     private DoctorService doctorService;
 
     @RequestMapping(value = "/list", produces = "application/json", method = RequestMethod.GET)
-    public List<DocktorResource> docktorsList(@RequestParam(required = false) Specialization specialization,
+    public List<DoctorResource> docktorsList(@RequestParam(required = false) Specialization specialization,
                                               @RequestParam(required = false) Integer minRate) {
-        List<DocktorResource> doctors = new ArrayList<>();
+        List<DoctorResource> doctors = new ArrayList<>();
         List<Doctor> list = doctorService.getList(specialization, minRate);
-
-        for(int i = 0; i < list.size(); i++){
-            Doctor doctor = list.get(i);
-            doctors.add(new DocktorResource(doctor.getName(), doctor.getLastname()));
-        }
+        DoctorResourceAssembler doctorResourceAssembler = new DoctorResourceAssembler();
+        doctors = doctorResourceAssembler.resourceMaking(list, doctors);
         return doctors;
     }
 
-    public class DocktorResource {
-        @JsonProperty
-        private String name;
-        @JsonProperty
-        private String lastname;
 
-        public DocktorResource(String name, String lastname) {
-            this.name = name;
-            this.lastname = lastname;
-        }
-    }
 
     @Autowired
     public void setDoctorService(DoctorService doctorService) {

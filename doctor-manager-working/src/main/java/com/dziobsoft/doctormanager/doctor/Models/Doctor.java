@@ -1,4 +1,4 @@
-package com.dziobsoft.doctormanager.doctor;
+package com.dziobsoft.doctormanager.doctor.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

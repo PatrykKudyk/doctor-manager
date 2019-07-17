@@ -1,5 +1,9 @@
 package com.dziobsoft.doctormanager.doctor;
 
+import com.dziobsoft.doctormanager.doctor.DAO.DoctorDao;
+import com.dziobsoft.doctormanager.doctor.Models.Doctor;
+import com.dziobsoft.doctormanager.doctor.Models.Specialization;
+import com.dziobsoft.doctormanager.doctor.Services.DoctorServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;

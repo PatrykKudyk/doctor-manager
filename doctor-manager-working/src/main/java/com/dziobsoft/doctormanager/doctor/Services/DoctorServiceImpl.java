@@ -1,5 +1,8 @@
-package com.dziobsoft.doctormanager.doctor;
+package com.dziobsoft.doctormanager.doctor.Services;
 
+import com.dziobsoft.doctormanager.doctor.Models.Doctor;
+import com.dziobsoft.doctormanager.doctor.DAO.DoctorDao;
+import com.dziobsoft.doctormanager.doctor.Models.Specialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +30,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Autowired
-    void setDoctorDao(DoctorDao doctorDao) {
+    public void setDoctorDao(DoctorDao doctorDao) {
         this.doctorDao = doctorDao;
     }
 }

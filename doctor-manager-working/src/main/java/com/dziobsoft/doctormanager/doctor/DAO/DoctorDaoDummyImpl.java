@@ -1,5 +1,7 @@
-package com.dziobsoft.doctormanager.doctor;
+package com.dziobsoft.doctormanager.doctor.DAO;
 
+import com.dziobsoft.doctormanager.doctor.Models.Doctor;
+import com.dziobsoft.doctormanager.doctor.Models.Specialization;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
