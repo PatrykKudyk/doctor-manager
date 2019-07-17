@@ -109,4 +109,30 @@ public class DoctorServiceImplTest {
         //then
         assertEquals(result.size(), 2);
     }
+
+    @Test
+    public void shouldReturnSomeKARDIOLOGDoctors(){
+        //given
+        Specialization specialization = Specialization.KARDIOLOG;
+        Integer minRate = null;
+
+        //when
+        List<Doctor> result = underTest.getList(specialization, minRate);
+
+        //then
+        assertNotNull(result.size());
+    }
+
+    @Test
+    public void shouldReturnNoINTERNISTADoctors(){
+        //given
+        Specialization specialization = Specialization.INTERNISTA;
+        Integer minRate = null;
+
+        //when
+        List<Doctor> result = underTest.getList(specialization, minRate);
+
+        //then
+        assertEquals(result.size(), 0);
+    }
 }
