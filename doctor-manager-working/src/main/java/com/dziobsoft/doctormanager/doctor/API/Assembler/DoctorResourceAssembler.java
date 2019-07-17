@@ -10,7 +10,7 @@ public class DoctorResourceAssembler {
     public List<DoctorResource> resourceMaking(List<Doctor> list){
         List<DoctorResource> doctors = new ArrayList<>();
         for (Doctor doctor : list) {
-            doctors.add(new DoctorResource(doctor.getName(), doctor.getLastname()));
+            doctors.add(new DoctorResource(doctor.getName(), doctor.getLastname(), doctor.getSpecialization(), doctor.getRate()));
         }
         return doctors;
     }
