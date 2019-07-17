@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,5 +69,44 @@ public class DoctorServiceImplTest {
         //then
         assertEquals(result.size(), 4);
 
+    }
+
+    @Test
+    public void shouldReturnZeroDoctors(){
+        //given
+        Specialization specialization = null;
+        Integer minRate = 999;
+
+        //when
+        List<Doctor> result = underTest.getList(specialization, minRate);
+
+        //then
+        assertEquals(result.size(), 0);
+    }
+
+    @Test
+    public void shouldReturnWellRatedDoctors(){
+        //given
+        Specialization specialization = null;
+        Integer minRate = 4;
+
+        //when
+        List<Doctor> result = underTest.getList(specialization, minRate);
+
+        //then
+        assertEquals(result.size(), 2);
+    }
+
+    @Test
+    public void shouldReturnJustOPTYKDoctors(){
+        //given
+        Specialization specialization = Specialization.OPTYK;
+        Integer minRate = null;
+
+        //when
+        List<Doctor> result = underTest.getList(specialization, minRate);
+
+        //then
+        assertEquals(result.size(), 2);
     }
 }
