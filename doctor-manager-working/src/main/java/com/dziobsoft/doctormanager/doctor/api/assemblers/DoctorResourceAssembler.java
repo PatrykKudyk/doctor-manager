@@ -6,21 +6,23 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class DoctorResourceAssembler {
     public List<DoctorResource> buildResources(List<Doctor> list){
-        List<DoctorResource> doctors = new ArrayList<>();
-        for (Doctor doctor : list) {
+
+        List<DoctorResource> doctorResources = list.stream().map(doctor -> {
             DoctorResource doctorResource = DoctorResource.builder()
                     .name(doctor.getName())
                     .lastname(doctor.getLastname())
                     .specialization(doctor.getSpecialization())
                     .rate(doctor.getRate())
                     .build();
-            doctors.add(doctorResource);
-        }
-        return doctors;
+            return doctorResource;
+        }).collect(Collectors.toList());
+
+        return doctorResources;
     }
 
 }
