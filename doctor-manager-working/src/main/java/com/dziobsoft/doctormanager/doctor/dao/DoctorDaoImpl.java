@@ -1,6 +1,6 @@
-package com.dziobsoft.doctormanager.doctor.DAO;
+package com.dziobsoft.doctormanager.doctor.dao;
 
-import com.dziobsoft.doctormanager.doctor.Models.Doctor;
+import com.dziobsoft.doctormanager.doctor.models.Doctor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

@@ -1,32 +1,30 @@
-package com.dziobsoft.doctormanager.doctor.API.Controllers;
+package com.dziobsoft.doctormanager.doctor.api.controllers;
 
-import com.dziobsoft.doctormanager.doctor.API.Assembler.DoctorResourceAssembler;
-import com.dziobsoft.doctormanager.doctor.API.Resources.DoctorResource;
-import com.dziobsoft.doctormanager.doctor.Models.Doctor;
-import com.dziobsoft.doctormanager.doctor.Services.DoctorService;
-import com.dziobsoft.doctormanager.doctor.Models.Specialization;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.dziobsoft.doctormanager.doctor.api.assemblers.DoctorResourceAssembler;
+import com.dziobsoft.doctormanager.doctor.api.resources.DoctorResource;
+import com.dziobsoft.doctormanager.doctor.models.Doctor;
+import com.dziobsoft.doctormanager.doctor.services.DoctorService;
+import com.dziobsoft.doctormanager.doctor.models.Specialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/doctor")
 public class DoctorController {
     private DoctorService doctorService;
+    private DoctorResourceAssembler doctorResourceAssembler;
 
     @RequestMapping(value = "/list/doctorNames", produces = "application/json", method = RequestMethod.GET)
     public List<DoctorResource> doctorsNamesList(@RequestParam(required = false) Specialization specialization,
                                               @RequestParam(required = false) Integer minRate) {
         List<DoctorResource> doctorResources;
         List<Doctor> doctorList = doctorService.getList(specialization, minRate);
-        DoctorResourceAssembler doctorResourceAssembler = new DoctorResourceAssembler();
-        doctorResources = doctorResourceAssembler.resourceMaking(doctorList);
+        doctorResources = doctorResourceAssembler.buildResources(doctorList);
 
         return doctorResources;
     }
@@ -36,8 +34,7 @@ public class DoctorController {
 
         List<DoctorResource> doctorResources;
         List<Doctor> doctorList = doctorService.getList(minRate);
-        DoctorResourceAssembler doctorResourceAssembler = new DoctorResourceAssembler();
-        doctorResources = doctorResourceAssembler.resourceMaking(doctorList);
+        doctorResources = doctorResourceAssembler.buildResources(doctorList);
 
         return doctorResources;
     }
@@ -47,8 +44,7 @@ public class DoctorController {
 
         List<DoctorResource> doctorResources;
         List<Doctor> doctorList = doctorService.getListWithRate(rate);
-        DoctorResourceAssembler doctorResourceAssembler = new DoctorResourceAssembler();
-        doctorResources = doctorResourceAssembler.resourceMaking(doctorList);
+        doctorResources = doctorResourceAssembler.buildResources(doctorList);
 
         return doctorResources;
     }
@@ -57,4 +53,7 @@ public class DoctorController {
     public void setDoctorService(DoctorService doctorService) {
         this.doctorService = doctorService;
     }
+
+    @Autowired
+    public void setDoctorResourceAssembler(DoctorResourceAssembler doctorResourceAssembler) { this.doctorResourceAssembler =doctorResourceAssembler; }
 }

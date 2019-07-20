@@ -1,13 +1,12 @@
-package com.dziobsoft.doctormanager.doctor.Services;
+package com.dziobsoft.doctormanager.doctor.services;
 
-import com.dziobsoft.doctormanager.doctor.Models.Doctor;
-import com.dziobsoft.doctormanager.doctor.DAO.DoctorDao;
-import com.dziobsoft.doctormanager.doctor.Models.Specialization;
+import com.dziobsoft.doctormanager.doctor.models.Doctor;
+import com.dziobsoft.doctormanager.doctor.dao.DoctorDao;
+import com.dziobsoft.doctormanager.doctor.models.Specialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 

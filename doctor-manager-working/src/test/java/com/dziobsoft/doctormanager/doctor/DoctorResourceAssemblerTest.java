@@ -1,9 +1,8 @@
 package com.dziobsoft.doctormanager.doctor;
 
-import com.dziobsoft.doctormanager.doctor.API.Assembler.DoctorResourceAssembler;;
-import com.dziobsoft.doctormanager.doctor.API.Resources.DoctorResource;
-import com.dziobsoft.doctormanager.doctor.Models.Doctor;
-import com.dziobsoft.doctormanager.doctor.Models.Specialization;
+import com.dziobsoft.doctormanager.doctor.api.assemblers.DoctorResourceAssembler;;
+import com.dziobsoft.doctormanager.doctor.models.Doctor;
+import com.dziobsoft.doctormanager.doctor.models.Specialization;
 import org.junit.Before;
 import org.junit.Test;
 

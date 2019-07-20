@@ -1,7 +1,7 @@
-package com.dziobsoft.doctormanager.doctor.Services;
+package com.dziobsoft.doctormanager.doctor.services;
 
-import com.dziobsoft.doctormanager.doctor.Models.Doctor;
-import com.dziobsoft.doctormanager.doctor.Models.Specialization;
+import com.dziobsoft.doctormanager.doctor.models.Doctor;
+import com.dziobsoft.doctormanager.doctor.models.Specialization;
 
 import java.util.List;
 

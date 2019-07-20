@@ -1,14 +1,13 @@
 package com.dziobsoft.doctormanager.doctor;
 
-import com.dziobsoft.doctormanager.doctor.DAO.DoctorDao;
-import com.dziobsoft.doctormanager.doctor.Models.Doctor;
-import com.dziobsoft.doctormanager.doctor.Models.Specialization;
-import com.dziobsoft.doctormanager.doctor.Services.DoctorServiceImpl;
+import com.dziobsoft.doctormanager.doctor.dao.DoctorDao;
+import com.dziobsoft.doctormanager.doctor.models.Doctor;
+import com.dziobsoft.doctormanager.doctor.models.Specialization;
+import com.dziobsoft.doctormanager.doctor.services.DoctorServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 
