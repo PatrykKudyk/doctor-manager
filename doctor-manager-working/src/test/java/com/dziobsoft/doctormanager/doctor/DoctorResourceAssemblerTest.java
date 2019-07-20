@@ -47,8 +47,8 @@ public class DoctorResourceAssemblerTest {
         //then
         assertEquals(result.size(), doctorList.size());
         assertEquals(doctorList.get(0).getName(), result.get(0).getName());
-        assertEquals(doctorList.get(0).getLastname(), result.get(0).getLastname());
-        assertEquals(doctorList.get(0).getSpecialization(), result.get(0).getSpecialization());
+        assertEquals(doctorList.get(1).getLastname(), result.get(1).getLastname());
+        assertEquals(doctorList.get(1).getSpecialization(), result.get(1).getSpecialization());
         assertEquals(doctorList.get(0).getRate(), result.get(0).getRate());
     }
 
