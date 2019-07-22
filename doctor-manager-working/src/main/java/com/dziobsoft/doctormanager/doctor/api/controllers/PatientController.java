@@ -38,7 +38,13 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/persistPatient", method = RequestMethod.POST)
-    public ResponseEntity<String> persistPatient(@RequestBody Patient patient) {
+    public ResponseEntity<String> persistPatient(@RequestBody PatientResource patientResource) {
+        Patient patient = Patient.builder()
+                .name(patientResource.getName())
+                .lastname(patientResource.getLastname())
+                .birthdate(patientResource.getBirthdate())
+                .email(patientResource.getEmail())
+                .build();
         if (patientService.isValid(patient)) {
             patientService.putPatient(patient);
             return ResponseEntity.status(HttpStatus.CREATED).build();
