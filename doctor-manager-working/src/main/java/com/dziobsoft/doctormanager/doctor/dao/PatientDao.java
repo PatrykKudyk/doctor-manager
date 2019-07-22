@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PatientDao {
     List<Patient> getList();
+    void persist(Patient patient);
 }

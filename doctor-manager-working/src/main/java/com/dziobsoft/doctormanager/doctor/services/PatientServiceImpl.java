@@ -33,6 +33,28 @@ public class PatientServiceImpl implements PatientService {
         return patientStream.collect(Collectors.toList());
     }
 
+    @Override
+    public Boolean isValid(Patient patient){
+        if(patient.getName() == null){
+            return false;
+        }
+        if(patient.getLastname() == null){
+            return false;
+        }
+        if(patient.getBirthdate() == null){
+            return false;
+        }
+        if(patient.getEmail() == null){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void putPatient(Patient patient){
+        patientDao.persist(patient);
+    }
+
     @Autowired
     public void setPatientDao(PatientDao patientDao) { this.patientDao = patientDao; }
 }

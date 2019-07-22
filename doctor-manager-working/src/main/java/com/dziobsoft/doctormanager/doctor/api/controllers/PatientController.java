@@ -3,13 +3,11 @@ package com.dziobsoft.doctormanager.doctor.api.controllers;
 import com.dziobsoft.doctormanager.doctor.api.assemblers.PatientResourceAssembler;
 import com.dziobsoft.doctormanager.doctor.api.resources.PatientResource;
 import com.dziobsoft.doctormanager.doctor.models.Patient;
-import com.dziobsoft.doctormanager.doctor.services.DoctorService;
 import com.dziobsoft.doctormanager.doctor.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +37,15 @@ public class PatientController {
         return patientResources;
     }
 
+    @RequestMapping(value = "/persistPatient", method = RequestMethod.POST)
+    public ResponseEntity<String> persistPatient(@RequestBody Patient patient) {
+        if (patientService.isValid(patient)) {
+            patientService.putPatient(patient);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
+        return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
+    }
+
     @Autowired
     public void setPatientService(PatientService patientService) {
         this.patientService = patientService;
@@ -46,4 +53,5 @@ public class PatientController {
 
     @Autowired
     public void setPatientResourceAssembler(PatientResourceAssembler patientResourceAssembler) { this.patientResourceAssembler = patientResourceAssembler; }
+
 }
