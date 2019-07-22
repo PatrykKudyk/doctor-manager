@@ -17,7 +17,7 @@ public class PatientResourceAssembler {
             PatientResource patientResource = PatientResource.builder()
                     .name(patient.getName())
                     .lastname(patient.getLastname())
-                    .date(patient.getDate())
+                    .birthdate(patient.getBirthdate())
                     .email(patient.getEmail())
                     .build();
             return patientResource;

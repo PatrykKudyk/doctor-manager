@@ -20,8 +20,8 @@ public class PatientController {
     private PatientResourceAssembler patientResourceAssembler;
 
     @RequestMapping(value = "/list/patientsNameGiven", produces = "application/json", method = RequestMethod.GET)
-    public List<PatientResource> patientsNamesList(@RequestParam(required = true) String name,
-                                                  @RequestParam(required = true) String lastName) {
+    public List<PatientResource> patientsNamesList(@RequestParam() String name,
+                                                  @RequestParam() String lastName) {
         List<PatientResource> patientResources;
         List<Patient> patientList = patientService.getList(name, lastName);
         patientResources = patientResourceAssembler.buildResources(patientList);
@@ -31,6 +31,7 @@ public class PatientController {
 
     @RequestMapping(value = "/list/patients", produces = "application/json", method = RequestMethod.GET)
     public List<PatientResource> patientsList() {
+
         List<PatientResource> patientResources;
         List<Patient> patientList = patientService.getList();
         patientResources = patientResourceAssembler.buildResources(patientList);

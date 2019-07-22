@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @Builder
@@ -22,8 +22,8 @@ public class Patient {
     private String name;
     @Column(name = "lastname")
     private String lastname;
-    @Column(name = "birthDate")
-    private Date date;
+    @Column(name = "birthdate")
+    private Date birthdate;
     @Column(name = "email")
     private String email;
 }
