@@ -4,7 +4,6 @@ import com.dziobsoft.doctormanager.doctor.api.resources.DoctorResource;
 import com.dziobsoft.doctormanager.doctor.models.Doctor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
