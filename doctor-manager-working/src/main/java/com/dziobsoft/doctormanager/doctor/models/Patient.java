@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -15,15 +15,16 @@ import java.util.Date;
 @Entity
 @Table(name = "patient")
 public class Patient {
-    @Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "lastname")
     private String lastname;
     @Column(name = "birthdate")
-    private Date birthdate;
+    private LocalDate birthdate;
     @Column(name = "email")
     private String email;
 }

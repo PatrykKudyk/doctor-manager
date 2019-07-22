@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 
 @Data
@@ -18,7 +18,7 @@ public class PatientResource {
     @JsonProperty
     private String lastname;
     @JsonProperty
-    private Date birthdate;
+    private LocalDate birthdate;
     @JsonProperty
     private String email;
 
