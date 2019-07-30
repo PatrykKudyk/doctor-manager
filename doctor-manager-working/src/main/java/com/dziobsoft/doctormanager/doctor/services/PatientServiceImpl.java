@@ -65,6 +65,11 @@ public class PatientServiceImpl implements PatientService {
         patientDao.updateName(patient, name);
     }
 
+    @Override
+    public void updatePatient(Patient patientTaken, Patient patientGiven){
+        patientDao.updatePatient(patientTaken, patientGiven);
+    }
+
     @Autowired
     public void setPatientDao(PatientDao patientDao) { this.patientDao = patientDao; }
 }

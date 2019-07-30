@@ -55,6 +55,15 @@ public class PatientController {
         return "Imie zostalo poprawnie zmienione";
     }
 
+    @RequestMapping(value = "/updatePatient", method = RequestMethod.PUT)
+    public String updatePatient(@RequestBody Patient patient){
+
+        Patient patientDAO = patientService.getPatientById(patient.getId());
+        patientService.updatePatient(patientDAO, patient);
+        return "Pacjent został poprawnie zaktualizowany";
+    }
+
+
     @Autowired
     public void setPatientService(PatientService patientService) {
         this.patientService = patientService;
