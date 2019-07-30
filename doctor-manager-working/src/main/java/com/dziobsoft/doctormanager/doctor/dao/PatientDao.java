@@ -7,4 +7,6 @@ import java.util.List;
 public interface PatientDao {
     List<Patient> getList();
     void persist(Patient patient);
+    Patient getPatientById(int id);
+    void updateName(Patient patient, String name);
 }

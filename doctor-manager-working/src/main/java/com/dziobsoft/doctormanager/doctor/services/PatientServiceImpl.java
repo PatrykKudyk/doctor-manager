@@ -55,6 +55,16 @@ public class PatientServiceImpl implements PatientService {
         patientDao.persist(patient);
     }
 
+    @Override
+    public Patient getPatientById(int id){
+        return patientDao.getPatientById(id);
+    }
+
+    @Override
+    public void updatePatientName(Patient patient, String name){
+        patientDao.updateName(patient, name);
+    }
+
     @Autowired
     public void setPatientDao(PatientDao patientDao) { this.patientDao = patientDao; }
 }

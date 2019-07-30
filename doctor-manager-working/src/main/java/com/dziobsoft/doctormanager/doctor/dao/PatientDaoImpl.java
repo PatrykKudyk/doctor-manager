@@ -16,7 +16,7 @@ public class PatientDaoImpl implements PatientDao {
 
     @Override
     public List<Patient> getList(){
-        return entityManager.createQuery("Select p from Patient p").getResultList();
+        return entityManager.createQuery("Select p from Patient p", Patient.class).getResultList();
     }
 
     @Transactional
@@ -25,4 +25,16 @@ public class PatientDaoImpl implements PatientDao {
         entityManager.persist(patient);
     }
 
+    @Override
+    public Patient getPatientById(int id) {
+        return entityManager.createQuery("Select p from Patient p where p.id like :patientId", Patient.class).setParameter("patientId", id).getSingleResult();
+    }
+
+    @Override
+    public void updateName(Patient patient, String name){
+        Patient patientEntity = (Patient)entityManager.find(Patient.class, patient.getId());
+        entityManager.getTransaction().begin();
+        patientEntity.setName(name);
+        entityManager.getTransaction().commit();
+    }
 }

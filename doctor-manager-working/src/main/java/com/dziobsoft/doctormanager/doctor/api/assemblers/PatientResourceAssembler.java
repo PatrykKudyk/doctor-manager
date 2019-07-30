@@ -25,4 +25,16 @@ public class PatientResourceAssembler {
 
         return patientResources;
     }
+
+    public Patient buildPatient(PatientResource patientResource){
+
+        Patient patient = Patient.builder()
+                .name(patientResource.getName())
+                .lastname(patientResource.getLastname())
+                .birthdate(patientResource.getBirthdate())
+                .email(patientResource.getEmail())
+                .build();
+
+        return patient;
+    }
 }
