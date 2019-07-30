@@ -26,15 +26,14 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
-    public Patient getPatientById(int id) {
-        return entityManager.createQuery("Select p from Patient p where p.id like :patientId", Patient.class).setParameter("patientId", id).getSingleResult();
+    public Patient getPatientById(long id) {
+        return entityManager.createQuery("Select p from Patient p where p.id = :patientId", Patient.class).setParameter("patientId", id).getSingleResult();
     }
 
+    @Transactional
     @Override
     public void updateName(Patient patient, String name){
-        Patient patientEntity = (Patient)entityManager.find(Patient.class, patient.getId());
-        entityManager.getTransaction().begin();
+        Patient patientEntity = entityManager.find(Patient.class, patient.getId());
         patientEntity.setName(name);
-        entityManager.getTransaction().commit();
     }
 }

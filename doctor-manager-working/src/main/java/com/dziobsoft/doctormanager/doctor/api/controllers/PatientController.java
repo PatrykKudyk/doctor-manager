@@ -48,11 +48,10 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/updatePatientName", method = RequestMethod.PUT)
-    public String updatePatientName(@RequestParam int id,
-                                    @RequestParam String name){
+    public String updatePatientName(@RequestBody Patient patient){
 
-        Patient patient = patientService.getPatientById(id);
-        patientService.updatePatientName(patient, name);
+        Patient patientDAO = patientService.getPatientById(patient.getId());
+        patientService.updatePatientName(patientDAO, patient.getName());
         return "Imie zostalo poprawnie zmienione";
     }
 

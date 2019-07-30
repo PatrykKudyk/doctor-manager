@@ -9,6 +9,6 @@ public interface PatientService {
     List<Patient> getList(String name, String lastname);
     Boolean isValid(Patient patient);
     void putPatient(Patient patient);
-    Patient getPatientById(int id);
+    Patient getPatientById(long id);
     void updatePatientName(Patient patient, String name);
 }
