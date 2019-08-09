@@ -37,4 +37,22 @@ public class PatientResourceAssembler {
 
         return patient;
     }
+
+    public Patient updatePatient(PatientResource patientResource, Patient patient){
+
+        if(patientResource.getName() != null){
+            patient.setName(patientResource.getName());
+        }
+        if(patientResource.getLastname() != null){
+            patient.setLastname(patientResource.getLastname());
+        }
+        if(patientResource.getBirthdate() != null){
+            patient.setBirthdate(patientResource.getBirthdate());
+        }
+        if(patientResource.getEmail() != null){
+            patient.setEmail(patientResource.getEmail());
+        }
+
+        return patient;
+    }
 }

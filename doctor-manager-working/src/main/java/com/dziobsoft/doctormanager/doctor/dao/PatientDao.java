@@ -9,5 +9,5 @@ public interface PatientDao {
     void persist(Patient patient);
     Patient getPatientById(long id);
     void updateName(Patient patient, String name);
-    void updatePatient(Patient patientTaken, Patient patientGiven);
+    void updatePatient(Patient patient);
 }

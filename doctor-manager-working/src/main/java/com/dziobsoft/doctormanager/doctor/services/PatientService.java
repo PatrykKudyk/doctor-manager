@@ -12,5 +12,5 @@ public interface PatientService {
     void putPatient(Patient patient);
     Patient getPatientById(long id);
     void updatePatientName(Patient patient, String name);
-    void updatePatient(Patient patientDAO, Patient patient);
+    void updatePatient(Patient patient);
 }

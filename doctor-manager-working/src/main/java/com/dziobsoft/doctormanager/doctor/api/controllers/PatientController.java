@@ -56,10 +56,12 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/updatePatient", method = RequestMethod.PUT)
-    public String updatePatient(@RequestBody Patient patient){
+    public String updatePatient(@RequestBody PatientResource patientResource,
+                                @RequestParam int id){
 
-        Patient patientDAO = patientService.getPatientById(patient.getId());
-        patientService.updatePatient(patientDAO, patient);
+        Patient patientDao = patientService.getPatientById(id);
+        patientDao = patientResourceAssembler.updatePatient(patientResource, patientDao);
+        patientService.updatePatient(patientDao);
         return "Pacjent został poprawnie zaktualizowany";
     }
 

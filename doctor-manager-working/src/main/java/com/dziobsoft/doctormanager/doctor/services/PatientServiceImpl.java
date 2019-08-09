@@ -1,6 +1,5 @@
 package com.dziobsoft.doctormanager.doctor.services;
 
-import com.dziobsoft.doctormanager.doctor.api.resources.PatientResource;
 import com.dziobsoft.doctormanager.doctor.dao.PatientDao;
 import com.dziobsoft.doctormanager.doctor.models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,8 +66,8 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void updatePatient(Patient patientTaken, Patient patientGiven){
-        patientDao.updatePatient(patientTaken, patientGiven);
+    public void updatePatient(Patient patient){
+        patientDao.updatePatient(patient);
     }
 
     @Autowired
