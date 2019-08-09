@@ -1,5 +1,6 @@
 package com.dziobsoft.doctormanager.doctor.services;
 
+import com.dziobsoft.doctormanager.doctor.api.resources.PatientResource;
 import com.dziobsoft.doctormanager.doctor.models.Patient;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 public interface PatientService {
     List<Patient> getList();
     List<Patient> getList(String name, String lastname);
-    Boolean isValid(Patient patient);
+    Boolean isValid(PatientResource patient);
     void putPatient(Patient patient);
     Patient getPatientById(long id);
     void updatePatientName(Patient patient, String name);

@@ -38,10 +38,10 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/persistPatient", method = RequestMethod.POST)
-    public ResponseEntity<String> persistPatient(@RequestBody Patient patient) {
+    public ResponseEntity<String> persistPatient(@RequestBody PatientResource patientResource) {
 
-        if (patientService.isValid(patient)){
-            patientService.putPatient(patient);
+        if (patientService.isValid(patientResource)){
+            patientService.putPatient(patientResourceAssembler.buildPatient(patientResource));
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();

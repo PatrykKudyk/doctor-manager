@@ -1,5 +1,6 @@
 package com.dziobsoft.doctormanager.doctor.services;
 
+import com.dziobsoft.doctormanager.doctor.api.resources.PatientResource;
 import com.dziobsoft.doctormanager.doctor.dao.PatientDao;
 import com.dziobsoft.doctormanager.doctor.models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Boolean isValid(Patient patient){
+    public Boolean isValid(PatientResource patient){
         if(patient.getName() == null){
             return false;
         }
