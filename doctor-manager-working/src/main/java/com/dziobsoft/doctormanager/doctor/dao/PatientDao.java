@@ -10,4 +10,5 @@ public interface PatientDao {
     Patient getPatientById(long id);
     void updateName(Patient patient, String name);
     void updatePatient(Patient patient);
+    void deletePatient(long id);
 }

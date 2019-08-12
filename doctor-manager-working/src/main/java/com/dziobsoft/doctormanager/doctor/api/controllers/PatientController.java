@@ -46,11 +46,11 @@ public class PatientController {
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
-    
+
 
     @RequestMapping(value = "/updatePatient", method = RequestMethod.PUT)
     public String updatePatient(@RequestBody PatientResource patientResource,
-                                @RequestParam int id){
+                                @RequestParam (required = true) int id){
 
         Patient patientDao = patientService.getPatientById(id);
         patientDao = patientResourceAssembler.updatePatient(patientResource, patientDao);
@@ -58,6 +58,12 @@ public class PatientController {
         return "Pacjent został poprawnie zaktualizowany";
     }
 
+    @RequestMapping(value = "deletePatient", method = RequestMethod.DELETE)
+    public String deletePatient(@RequestParam (required = true) int id){
+
+        patientService.deletePatient(id);
+        return "Pacjent został pomyślnie usuniety";
+    }
 
     @Autowired
     public void setPatientService(PatientService patientService) {

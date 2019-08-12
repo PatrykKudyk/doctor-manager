@@ -71,6 +71,11 @@ public class PatientServiceImpl implements PatientService {
         patientDao.updatePatient(patient);
     }
 
+    @Override
+    public void deletePatient(long id){
+        patientDao.deletePatient(id);
+    }
+
     @Autowired
     public void setPatientDao(PatientDao patientDao) { this.patientDao = patientDao; }
 }
