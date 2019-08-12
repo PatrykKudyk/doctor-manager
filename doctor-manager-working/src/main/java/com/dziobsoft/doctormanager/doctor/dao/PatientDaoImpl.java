@@ -39,11 +39,11 @@ public class PatientDaoImpl implements PatientDao {
 
     @Transactional
     @Override
-    public void updatePatient(Patient patientTaken, Patient patientGiven){
-        Patient patientEntity = entityManager.find(Patient.class, patientTaken.getId());
-        patientEntity.setName(patientGiven.getName());
-        patientEntity.setLastname(patientGiven.getLastname());
-        patientEntity.setBirthdate(patientGiven.getBirthdate());
-        patientEntity.setEmail(patientGiven.getEmail());
+    public void updatePatient(Patient patient){
+        Patient patientEntity = entityManager.find(Patient.class, patient.getId());
+        patientEntity.setName(patient.getName());
+        patientEntity.setLastname(patient.getLastname());
+        patientEntity.setBirthdate(patient.getBirthdate());
+        patientEntity.setEmail(patient.getEmail());
     }
 }

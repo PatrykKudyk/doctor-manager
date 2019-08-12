@@ -46,14 +46,7 @@ public class PatientController {
         }
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
-
-    @RequestMapping(value = "/updatePatientName", method = RequestMethod.PUT)
-    public String updatePatientName(@RequestBody Patient patient){
-
-        Patient patientDAO = patientService.getPatientById(patient.getId());
-        patientService.updatePatientName(patientDAO, patient.getName());
-        return "Imie zostalo poprawnie zmienione";
-    }
+    
 
     @RequestMapping(value = "/updatePatient", method = RequestMethod.PUT)
     public String updatePatient(@RequestBody PatientResource patientResource,
