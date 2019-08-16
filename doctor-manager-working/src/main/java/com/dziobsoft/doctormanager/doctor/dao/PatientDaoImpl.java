@@ -47,8 +47,10 @@ public class PatientDaoImpl implements PatientDao {
         patientEntity.setEmail(patient.getEmail());
     }
 
+    @Transactional
     @Override
     public void deletePatient(long id){
-        entityManager.createQuery("Delete p from p where p.id = :patientId", Patient.class).setParameter("patientId", id);
+       // entityManager.createQuery("Delete p from p where p.id = :patientId", Patient.class).setParameter("patientId", id);
+        entityManager.remove(getPatientById(id));
     }
 }
