@@ -13,8 +13,8 @@ public class VisitResourceAssembler {
 
         List<VisitResource> visitResourceList = list.stream().map(visit -> {
             VisitResource visitResource = VisitResource.builder()
-                    .doctor(visit.getDoctor())
-                    .patient(visit.getPatient())
+                    .doctorID(visit.getDoctorID())
+                    .patientID(visit.getPatientID())
                     .date(visit.getDate())
                     .duration(visit.getDuration())
                     .visitType(visit.getVisitType())

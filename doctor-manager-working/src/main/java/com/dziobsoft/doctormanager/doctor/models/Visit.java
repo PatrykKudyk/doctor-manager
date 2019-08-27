@@ -18,10 +18,10 @@ public class Visit {
     @Column(name = "id")
     @Id
     private Long id;
-    @Column(name = "doctor")
-    private Doctor doctor;
-    @Column(name = "patient")
-    private Patient patient;
+    @Column(name = "doctorID")
+    private int doctorID;
+    @Column(name = "patientID")
+    private int patientID;
     @Column(name = "date")
     private LocalDate date;
     @Column(name = "duration")
