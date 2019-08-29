@@ -16,7 +16,8 @@ public class VisitDaoImpl implements VisitDao {
 
     @Override
     public List<Visit> getList(LocalDate fromDate, LocalDate toDate){
-        return entityManager.createQuery("Select v from Visit v where v.date " +
+       // return  entityManager.createQuery("select v from Visit v", Visit.class).getResultList();
+       return entityManager.createQuery("Select v from Visit v where v.date " +
                 "between (:fromDate) and (:toDate)", Visit.class)
                 .setParameter("fromDate", fromDate)
                 .setParameter("toDate", toDate)
