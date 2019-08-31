@@ -1,5 +1,6 @@
 package com.dziobsoft.doctormanager.doctor.services;
 
+import com.dziobsoft.doctormanager.doctor.api.resources.VisitResource;
 import com.dziobsoft.doctormanager.doctor.dao.VisitDao;
 import com.dziobsoft.doctormanager.doctor.models.Visit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,34 @@ public class VisitServiceImpl implements VisitService {
         }
         List<Visit> visitList = visitDao.getList(fromDate, toDate);
         return visitList;
+    }
+
+    @Override
+    public Boolean isValid(VisitResource visitResource){
+        if(visitResource.getDoctorID() == null){
+            return false;
+        }
+        if(visitResource.getPatientID() == null){
+            return false;
+        }
+        if(visitResource.getDate() == null){
+            return false;
+        }
+        if(visitResource.getDuration() == null){
+            return false;
+        }
+        if(visitResource.getVisitType() == null){
+            return false;
+        }
+        if(visitResource.getPrice() == null){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void putVisit(Visit visit){
+        visitDao.persist(visit);
     }
 
     @Autowired

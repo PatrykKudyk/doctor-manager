@@ -18,15 +18,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class VisitResource {
     @JsonProperty
-    private int doctorID;
+    private Integer doctorID;
     @JsonProperty
-    private int patientID;
+    private Integer patientID;
     @JsonProperty
     private LocalDate date;
     @JsonProperty
-    private int duration;
+    private Integer duration;
     @JsonProperty
     private VisitType visitType;
     @JsonProperty
-    private int price;
+    private Integer price;
 }

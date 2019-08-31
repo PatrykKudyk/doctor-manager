@@ -27,4 +27,18 @@ public class VisitResourceAssembler {
 
         return visitResourceList;
     }
+
+    public Visit buildVisit(VisitResource patientResource){
+
+        Visit visit = Visit.builder()
+                .doctorID(patientResource.getDoctorID())
+                .patientID(patientResource.getPatientID())
+                .date(patientResource.getDate())
+                .duration(patientResource.getDuration())
+                .visitType(patientResource.getVisitType())
+                .price(patientResource.getPrice())
+                .build();
+
+        return visit;
+    }
 }

@@ -7,6 +7,8 @@ import com.dziobsoft.doctormanager.doctor.models.Visit;
 import com.dziobsoft.doctormanager.doctor.services.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -36,6 +38,15 @@ public class VisitController {
         List<Visit> visitList = visitService.getList(fromDate, toDate);
         visitResourceList = visitResourceAssembler.buildResources(visitList);
         return visitResourceList;
+    }
+
+    @RequestMapping(value = "/persist", method = RequestMethod.POST)
+    public ResponseEntity<String> persistVisit(@RequestBody VisitResource visitResource){
+
+        if(visitService.isValid(visitResource)){
+            visitService.putVisit(visitResourceAssembler.buildVisit(visitResource));
+        }
+        return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
     @Autowired

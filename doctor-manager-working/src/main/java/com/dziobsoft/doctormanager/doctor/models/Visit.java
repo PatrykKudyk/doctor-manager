@@ -19,16 +19,16 @@ public class Visit {
     @Id
     private Long id;
     @Column(name = "doctorID")
-    private int doctorID;
+    private Integer doctorID;
     @Column(name = "patientID")
-    private int patientID;
+    private Integer patientID;
     @Column(name = "date")
     private LocalDate date;
     @Column(name = "duration")
-    private int duration;
+    private Integer duration;
     @Column(name = "visitType")
     @Enumerated(value = EnumType.ORDINAL)
     private VisitType visitType;
     @Column(name = "price")
-    private int price;
+    private Integer price;
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,5 +23,11 @@ public class VisitDaoImpl implements VisitDao {
                 .setParameter("fromDate", fromDate)
                 .setParameter("toDate", toDate)
                 .getResultList();
+    }
+
+    @Transactional
+    @Override
+    public void persist(Visit visit){
+        entityManager.persist(visit);
     }
 }
