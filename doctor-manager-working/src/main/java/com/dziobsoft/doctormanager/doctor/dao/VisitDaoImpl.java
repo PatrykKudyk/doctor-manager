@@ -26,7 +26,7 @@ public class VisitDaoImpl implements VisitDao {
     }
 
     @Override
-    public Visit getVisitById(int id){
+    public Visit getVisitById(long id){
         return entityManager.createQuery("Select v from Visit v where v.id = :visitId", Visit.class).setParameter("visitId", id).getSingleResult();
     }
 
@@ -38,7 +38,7 @@ public class VisitDaoImpl implements VisitDao {
 
     @Transactional
     @Override
-    public void deleteVisit(int id){
+    public void deleteVisit(long id){
         entityManager.remove(getVisitById(id));
     }
 }

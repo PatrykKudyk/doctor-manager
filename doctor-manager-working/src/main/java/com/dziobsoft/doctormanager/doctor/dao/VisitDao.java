@@ -8,6 +8,6 @@ import java.util.List;
 public interface VisitDao {
     List<Visit> getList(LocalDate fromDate, LocalDate toDate);
     void persist(Visit visit);
-    void deleteVisit(int id);
-    Visit getVisitById(int id);
+    void deleteVisit(long id);
+    Visit getVisitById(long id);
 }

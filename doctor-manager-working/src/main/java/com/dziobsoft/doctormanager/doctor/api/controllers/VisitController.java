@@ -50,9 +50,9 @@ public class VisitController {
     }
 
     @RequestMapping(value = "/{someID}", method = RequestMethod.DELETE)
-    public String deleteVisit(@PathVariable(value="someID") String id){
+    public String deleteVisit(@PathVariable(value="someID") long id){
 
-        visitService.deleteVisit(Integer.parseInt(id));
+        visitService.deleteVisit(id);
         return "Pomyślnie usunięto vizytę";
     }
 

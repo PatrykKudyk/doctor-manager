@@ -58,7 +58,7 @@ public class PatientController {
         return "Pacjent został poprawnie zaktualizowany";
     }
 
-    @RequestMapping(value = "deletePatient", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deletePatient", method = RequestMethod.DELETE)
     public String deletePatient(@RequestParam (required = true) int id){
 
         patientService.deletePatient(id);

@@ -55,7 +55,7 @@ public class VisitServiceImpl implements VisitService {
     }
 
     @Override
-    public void deleteVisit(int id){
+    public void deleteVisit(long id){
         visitDao.deleteVisit(id);
     }
 
