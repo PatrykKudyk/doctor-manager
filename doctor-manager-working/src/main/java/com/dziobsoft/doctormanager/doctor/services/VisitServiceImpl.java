@@ -54,6 +54,11 @@ public class VisitServiceImpl implements VisitService {
         visitDao.persist(visit);
     }
 
+    @Override
+    public void deleteVisit(int id){
+        visitDao.deleteVisit(id);
+    }
+
     @Autowired
     public void setVisitDao(VisitDao visitDao) { this.visitDao = visitDao; }
 }

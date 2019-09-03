@@ -10,4 +10,5 @@ public interface VisitService {
     List<Visit> getList(LocalDate fromDate, LocalDate toDate);
     Boolean isValid(VisitResource visitResource);
     void putVisit(Visit visit);
+    void deleteVisit(int id);
 }

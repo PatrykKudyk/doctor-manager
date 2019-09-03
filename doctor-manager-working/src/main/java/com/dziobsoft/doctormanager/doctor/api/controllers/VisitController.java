@@ -49,6 +49,13 @@ public class VisitController {
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
+    @RequestMapping(value = "/{someID}", method = RequestMethod.DELETE)
+    public String deleteVisit(@PathVariable(value="someID") String id){
+
+        visitService.deleteVisit(Integer.parseInt(id));
+        return "Pomyślnie usunięto vizytę";
+    }
+
     @Autowired
     public void setVisitService(VisitService visitService) {
         this.visitService = visitService;

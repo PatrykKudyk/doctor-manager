@@ -25,9 +25,20 @@ public class VisitDaoImpl implements VisitDao {
                 .getResultList();
     }
 
+    @Override
+    public Visit getVisitById(int id){
+        return entityManager.createQuery("Select v from Visit v where v.id = :visitId", Visit.class).setParameter("visitId", id).getSingleResult();
+    }
+
     @Transactional
     @Override
     public void persist(Visit visit){
         entityManager.persist(visit);
+    }
+
+    @Transactional
+    @Override
+    public void deleteVisit(int id){
+        entityManager.remove(getVisitById(id));
     }
 }
