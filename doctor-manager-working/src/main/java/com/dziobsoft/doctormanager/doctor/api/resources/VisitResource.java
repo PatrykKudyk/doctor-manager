@@ -10,7 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -22,7 +22,7 @@ public class VisitResource {
     @JsonProperty
     private Integer patientID;
     @JsonProperty
-    private LocalDate date;
+    private LocalDateTime date;
     @JsonProperty
     private Integer duration;
     @JsonProperty
