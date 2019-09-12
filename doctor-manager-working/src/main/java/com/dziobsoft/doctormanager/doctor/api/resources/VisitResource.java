@@ -18,9 +18,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class VisitResource {
     @JsonProperty
-    private Doctor doctorId;
+    private Doctor doctor;
     @JsonProperty
-    private Patient patientId;
+    private Patient patient;
     @JsonProperty
     private LocalDateTime date;
     @JsonProperty

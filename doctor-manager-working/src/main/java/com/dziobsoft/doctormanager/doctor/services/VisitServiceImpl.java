@@ -28,10 +28,10 @@ public class VisitServiceImpl implements VisitService {
 
     @Override
     public Boolean isValid(VisitResource visitResource){
-        if(visitResource.getDoctorId() == null){
+        if(visitResource.getDoctor() == null){
             return false;
         }
-        if(visitResource.getPatientId() == null){
+        if(visitResource.getPatient() == null){
             return false;
         }
         if(visitResource.getDate() == null){
@@ -51,6 +51,7 @@ public class VisitServiceImpl implements VisitService {
 
     @Override
     public void putVisit(Visit visit){
+
         visitDao.persist(visit);
     }
 

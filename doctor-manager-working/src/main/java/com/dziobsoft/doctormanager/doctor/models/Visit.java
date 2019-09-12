@@ -19,12 +19,10 @@ public class Visit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "doctorId")
-    private Doctor doctorId;
-    @ManyToOne
-    @JoinColumn(name = "patientId")
-    private Patient patientId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Doctor doctor;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Patient patient;
     @Column(name = "date")
     private LocalDateTime date;
     @Column(name = "duration")
